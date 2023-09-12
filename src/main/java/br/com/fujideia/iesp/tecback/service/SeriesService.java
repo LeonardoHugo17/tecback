@@ -1,8 +1,7 @@
 package br.com.fujideia.iesp.tecback.service;
 
-
-import br.com.fujideia.iesp.tecback.model.Filme;
-import br.com.fujideia.iesp.tecback.repository.FilmeRepository;
+import br.com.fujideia.iesp.tecback.model.Series;
+import br.com.fujideia.iesp.tecback.repository.SeriesRepository;
 import jakarta.ws.rs.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,34 +10,34 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
 @Service
-public class FilmeService {
+@Slf4j
+public class SeriesService {
     @Autowired
-    private FilmeRepository repository;
+    private SeriesRepository repository;
 
-    public Filme salvar(Filme filme){
-        filme = repository.save(filme);
-        return filme;
+    public Series salvar(Series series) {
+        series = repository.save(series);
+        return series;
     }
 
-    public Filme alterar(Filme filme){
-        if(Objects.nonNull(filme.getId())){
-            filme = repository.save(filme);
-        }else{
+    public Series alterar(Series series) {
+        if (Objects.nonNull(series.getId())) {
+            series = repository.save(series);
+        } else {
             throw new NotFoundException();
         }
-        return filme;
+        return series;
     }
 
-    public List<Filme> listar(){
+    public List<Series> listar() {
         return repository.findAll();
     }
 
-    public Boolean excluir(Integer id){
+    public Boolean excluir(Integer id) {
         try {
             repository.deleteById(id);
-        }catch (Exception e ){
+        } catch (Exception e) {
             log.info("Erro ao realizar Exclusão : {}", e);
             return false;
 
@@ -46,12 +45,13 @@ public class FilmeService {
         return true;
     }
 
-    public Filme consultarPorId(Integer id){
+    public Series consultarPorId(Integer id) {
         return repository
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
     }
 
-
-
+    public Object IdConsulta(Integer id) {
+        return null;
+    }
 }

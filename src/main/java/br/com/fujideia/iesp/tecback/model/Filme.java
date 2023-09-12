@@ -21,7 +21,6 @@ public class Filme implements Serializable {
     private String sinopse;
 
     @ManyToOne
-    @JoinColumn(name = "genero_id")
     private Genero genero;
 
 }

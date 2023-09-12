@@ -1,8 +1,7 @@
 package br.com.fujideia.iesp.tecback.service;
 
-
-import br.com.fujideia.iesp.tecback.model.Filme;
-import br.com.fujideia.iesp.tecback.repository.FilmeRepository;
+import br.com.fujideia.iesp.tecback.model.Boleto;
+import br.com.fujideia.iesp.tecback.repository.BoletoRepository;
 import jakarta.ws.rs.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,27 +10,27 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
 @Service
-public class FilmeService {
+@Slf4j
+public class BoletoService {
     @Autowired
-    private FilmeRepository repository;
+    private BoletoRepository repository;
 
-    public Filme salvar(Filme filme){
-        filme = repository.save(filme);
-        return filme;
+    public Boleto salvar(Boleto boleto){
+        boleto = repository.save(boleto);
+        return boleto;
     }
 
-    public Filme alterar(Filme filme){
-        if(Objects.nonNull(filme.getId())){
-            filme = repository.save(filme);
+    public Boleto alterar(Boleto boleto){
+        if(Objects.nonNull(boleto.getId())){
+            boleto = repository.save(boleto);
         }else{
             throw new NotFoundException();
         }
-        return filme;
+        return boleto;
     }
 
-    public List<Filme> listar(){
+    public List<Boleto> listar(){
         return repository.findAll();
     }
 
@@ -46,12 +45,13 @@ public class FilmeService {
         return true;
     }
 
-    public Filme consultarPorId(Integer id){
+    public Boleto consultarPorId(Integer id){
         return repository
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
     }
 
-
-
+    public Object IdConsulta(Integer id){
+        return null;
+    }
 }

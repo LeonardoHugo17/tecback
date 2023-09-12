@@ -1,37 +1,38 @@
 package br.com.fujideia.iesp.tecback.service;
 
-
-import br.com.fujideia.iesp.tecback.model.Filme;
-import br.com.fujideia.iesp.tecback.repository.FilmeRepository;
+import br.com.fujideia.iesp.tecback.model.Pagamento;
+import br.com.fujideia.iesp.tecback.repository.PagamentoRepository;
 import jakarta.ws.rs.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
 
-@Slf4j
 @Service
-public class FilmeService {
+@Slf4j
+public class PagamentoService {
     @Autowired
-    private FilmeRepository repository;
+    private PagamentoRepository repository;
 
-    public Filme salvar(Filme filme){
-        filme = repository.save(filme);
-        return filme;
+    public Pagamento salvar(Pagamento pagamento){
+        pagamento = repository.save(pagamento);
+        return pagamento;
     }
 
-    public Filme alterar(Filme filme){
-        if(Objects.nonNull(filme.getId())){
-            filme = repository.save(filme);
+    public Pagamento alterar(Pagamento pagamento){
+        if(Objects.nonNull(pagamento.getId())){
+            pagamento = repository.save(pagamento);
         }else{
             throw new NotFoundException();
         }
-        return filme;
+        return pagamento;
     }
 
-    public List<Filme> listar(){
+    public List<Pagamento> listar(){
         return repository.findAll();
     }
 
@@ -46,12 +47,13 @@ public class FilmeService {
         return true;
     }
 
-    public Filme consultarPorId(Integer id){
+    public Pagamento consultarPorId(Integer id){
         return repository
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
     }
 
-
-
+    public Object IdConsulta(Integer id){
+        return null;
+    }
 }

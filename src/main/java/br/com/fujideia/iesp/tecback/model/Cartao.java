@@ -6,19 +6,16 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class Usuario {
-
+public class Cartao {
     @Id
     @GeneratedValue
-    private Integer Id;
-    private String nome;
-    private String email;
-    private String senha;
-    private Integer datanascimento;
-    private Float CPF;
-
+    private int id;
+    private String numeroCartao;
+    private String validadeCartao;
+    private String codigoSeguranca;
+    private String nomeTitularCartao;
 
 }
