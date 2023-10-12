@@ -6,11 +6,10 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+
 
 @Entity
 @Getter
