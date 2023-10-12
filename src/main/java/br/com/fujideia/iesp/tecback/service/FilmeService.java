@@ -51,7 +51,4 @@ public class FilmeService {
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
     }
-
-
-
-}
+    }
