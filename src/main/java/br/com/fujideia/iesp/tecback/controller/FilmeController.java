@@ -31,7 +31,17 @@ public class FilmeController {
         return ResponseEntity.ok(service.listar());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Filme> consultar(@PathVariable("id") Integer id){
+        return ResponseEntity.ok(service.consultarPorId(id));
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> excluir(@PathVariable("id") Integer id) {
+        if (service.excluir(id)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
-
-

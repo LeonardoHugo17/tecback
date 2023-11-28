@@ -52,8 +52,4 @@ public class PagamentoService {
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
     }
-
-    public Object IdConsulta(Integer id){
-        return null;
-    }
 }

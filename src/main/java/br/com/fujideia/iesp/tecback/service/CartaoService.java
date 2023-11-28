@@ -50,9 +50,6 @@ public class CartaoService {
         return repository
                 .findById(id)
                 .orElseThrow(NotFoundException::new);
-    }
 
-    public Object IdConsulta(Integer id) {
-        return null;
     }
 }

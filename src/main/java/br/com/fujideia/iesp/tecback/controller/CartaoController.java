@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/cartao")
 public class CartaoController {
     @Autowired
     private CartaoService service;
@@ -32,12 +32,12 @@ public class CartaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cartao> consultar(@PathVariable("id") Integer id) {
+    public ResponseEntity<Cartao> consultar(@PathVariable("id") int id) {
         return ResponseEntity.ok(service.consultarPorId(id));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> excluir(@PathVariable("id") Integer id) {
+    public ResponseEntity<Boolean> excluir(@PathVariable("id") int id) {
         if (service.excluir(id)) {
             return ResponseEntity.ok().build();
         } else {

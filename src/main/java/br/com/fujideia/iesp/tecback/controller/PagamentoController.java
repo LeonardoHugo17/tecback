@@ -1,18 +1,15 @@
 package br.com.fujideia.iesp.tecback.controller;
 
 import br.com.fujideia.iesp.tecback.model.Pagamento;
-import br.com.fujideia.iesp.tecback.repository.PagamentoRepository;
 import br.com.fujideia.iesp.tecback.service.PagamentoService;
-import jakarta.ws.rs.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 
 @RestController
-@RequestMapping
+@RequestMapping("/pagamento")
 public class PagamentoController {
     @Autowired
     private PagamentoService service;
@@ -32,11 +29,6 @@ public class PagamentoController {
     @GetMapping
     public ResponseEntity<List<Pagamento>> listar() {
         return ResponseEntity.ok(service.listar());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Pagamento> consultar(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok((Pagamento) service.IdConsulta(id));
     }
 
     @DeleteMapping("/{id}")
